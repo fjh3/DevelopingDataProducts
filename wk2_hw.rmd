@@ -1,0 +1,46 @@
+---
+title: 'Week 2 Assignment: DC Area Ski Resorts'
+---
+title: "Week 2 Assignment: My Favorite Ski Areas in the Washington D.C. Metro Area"
+date: "2023-02-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Instructions
+
+Create a web page using R Markdown that features a map created with Leaflet. Host your webpage on either GitHub Pages, RPubs, or NeoCities.  
+
+Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity!
+
+## Review criteria
+The rubric contains the following two questions:
+
+  1. Does the web page feature a date and is this date less than two months before 
+     the date that you're grading this assignment?
+
+  2. Does the web page feature an interactive map that appears to have been 
+     created with Leaflet?
+
+## Leaflet Map
+Click on the markers to get the resort name,
+
+```{r}
+library(leaflet) 
+
+ski_areas <- data.frame(lat = c(39.74167, 40.1095, 39.7637, 39.5569, 39.0425, 
+                                38.4030),
+                 lng = c(-77.93278, -76.9275, -77.3755, -79.3634, -79.3990, 
+                         -79.9939))
+
+resorts <- c("Whitetail Resort", "Roundtop Mountain Resort", "Liberty Mountain Resort",
+             "Wisp Resort", "Timberline Mountain Resort", "Snoeshoe Mountain Resort")
+
+ski_areas %>% 
+    leaflet() %>%
+    addTiles() %>%
+    addMarkers(popup = resorts)
+```
